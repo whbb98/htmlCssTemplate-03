@@ -144,12 +144,14 @@ header .main-nav > li > a::before {
     position: relative;
     height: calc(100vh - 60px);
 }
+
 @media (max-width: 575px) {
     .landing {
         position: relative;
         height: calc(100vh - 120px);
     }
 }
+
 .landing::before {
     position: absolute;
     content: "";
@@ -168,7 +170,7 @@ header .main-nav > li > a::before {
     align-items: center;
     position: relative;
     height: 80%;
-    top: 0px;
+    top: 0;
 }
 
 @media (max-width: 575px) {
@@ -181,11 +183,13 @@ header .main-nav > li > a::before {
 .landing .text {
     flex: 1;
 }
+
 @media (max-width: 575px) {
     .landing .text {
         margin-top: 20px;
     }
 }
+
 .landing .text h1 {
     text-transform: capitalize;
 }
@@ -218,14 +222,16 @@ header .main-nav > li > a::before {
     width: 100%;
     animation: up-down 3s linear infinite;
 }
+
 @keyframes up-down {
-    0%,100%{
+    0%, 100% {
         transform: translateY(0px);
     }
-    50%{
+    50% {
         transform: translateY(20px);
     }
 }
+
 .landing .down-icon {
     display: block;
     position: absolute;
@@ -235,9 +241,11 @@ header .main-nav > li > a::before {
     left: 50%;
     transform: translateX(-50%);
 }
-.landing .down-icon i{
+
+.landing .down-icon i {
     animation: bounce 1.5s ease-in-out infinite;
 }
+
 @keyframes bounce {
     0%, 10%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
@@ -247,5 +255,90 @@ header .main-nav > li > a::before {
     }
 }
 
+/*styling the mega menu*/
 
+header .main-nav > li:hover .mega-menu{
+    opacity: 1;
+    z-index: 100;
+    top: calc(100% + 1px);
+}
 
+header .mega-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 25px);
+    z-index: -1;
+    opacity: 0;
+    background-color: #fff;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    border-bottom: 3px solid var(--main-color);
+    gap: 40px;
+    transition: top var(--main-transition), opacity var(--main-transition);
+}
+
+@media (max-width: 575px) {
+    header .mega-menu {
+        flex-direction: column;
+        gap: 0;
+        padding: 5px;
+    }
+}
+
+header .mega-menu .image img {
+    max-width: 100%;
+}
+
+@media (max-width: 767px) {
+    header .mega-menu .image {
+        display: none;
+    }
+}
+
+header .mega-menu .links {
+    min-width: 200px;
+    flex-grow: 1;
+}
+
+header .mega-menu .links li {
+    position: relative;
+}
+
+header .mega-menu .links li:not(:last-of-type) {
+    border-bottom: 1px solid #ccc;
+}
+
+@media (max-width: 575px) {
+    header .mega-menu .links:first-of-type li:last-child {
+        border-bottom: 1px solid #ccc;
+    }
+}
+
+header .mega-menu .links li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #FAFAFA;
+    z-index: -1;
+    transition: var(--main-transition);
+}
+
+header .mega-menu .links li:hover::before {
+    width: 100%;
+}
+
+header .mega-menu .links li a {
+    color: var(--main-color);
+    padding: 10px;
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+header .mega-menu .links li a i {
+    margin-right: 10px;
+}
